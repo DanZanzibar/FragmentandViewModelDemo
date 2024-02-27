@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.fragmentandviewmodeldemo.FragmentOne"
+        tools:layout="@layout/fragment_one"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.example.fragmentandviewmodeldemo.FragmentTwo"
+        tools:layout="@layout/fragment_two"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>
+
+<!--
+
+A couple of notes on the xml:
+
+1. If you haven't already seen this, using a LinearLayout in combination with 'layout_weight' is
+really nice. The weights essentially determine how to allocate the extra space between the various
+child Views. When doing this, you need to use the '0dp' setting (which I believe is like giving zero
+size to it) in combination, so for a vertical LinearLayout, you want the child's height to be 0dp and
+it will be stretched according to how much weight you give it vs the other children's total weight.
+
+2. You want to use FragmentContainerView for placing Fragments into other layouts, though it can be
+done with other things (like FrameLayout and others I believe). This is the most acceptable current
+method.
+
+When doing this, you are required to have an id for the FragmentContainerView (it will cause errors
+otherwise). You then add the 'android:name' attribute which links it up to the correct Java Fragment
+class file. Lastly, you can use the 'tools:layout' attribute as above to actually see the Fragment
+displayed on the preview in Android Studio. It won't load the Fragment's layout into the preview
+otherwise and you'll just see a blank FragmentContainerView on the activity_main.xml preview. The
+program would still work and load it correctly, just not the IDE's preview.
+
+3. Also note that I have created a layout-land file for activity_main.xml to show how splitting this
+into fragments makes it so easy to allow for an alternate layout. It really changed how you can
+modularize your whole app.
+-->
