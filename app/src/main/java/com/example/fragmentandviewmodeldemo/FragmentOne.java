@@ -27,7 +27,7 @@ public class FragmentOne extends Fragment {
         DemoViewModel viewModel = new ViewModelProvider(requireActivity()).get(DemoViewModel.class);
 
         // The rest is all about setting up the observer so that the TextView always has the value
-        // stored in the ViewModel's 'fragmentOneText' LiveData object.
+        // stored in the ViewModel's 'fragmentOneLiveData' LiveData object.
         TextView fragOneTextView = requireView().findViewById(R.id.fragOneTextView);
 
         // Note the <String> matches the LiveData<String> object we are observing.
@@ -67,5 +67,10 @@ public class FragmentOne extends Fragment {
 
  3. A thing that is observing LiveData will invoke 'onChanged' as well when it is first created. So
  it guarantees that it will always be matching the LiveData object if set up in this method.
+
+ 4. Lastly, I don't use Android Studio's "add a fragment" or whatever it is called functionality,
+ because it adds a bunch of boilerplate code that I don't understand. I always simply add a java or
+ xml file and fill in everything (except I use Android Studio's insert getters/setters and
+ overridden methods like I mention earlier... but this doesn't do things I don't understand).
 */
 
